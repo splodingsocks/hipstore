@@ -1,0 +1,19 @@
+{
+  "name": "hipstore",
+  "version": "1.0.0",
+  "description": "A starter kit for Murphy Randle's workshop on learning intermediate Elm",
+  "main": "src/server/index.js",
+  "author": "Murphy Randle",
+  "license": "MIT",
+  "dependencies": {
+    "@types/cors": "^2.8.1",
+    "@types/express": "^4.0.35",
+    "@types/express-session": "^0.0.32",
+    "cors": "^2.8.3",
+    "create-elm-app": "^0.6.0",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "monapt": "^0.7.1",
+    "ts-node": "^3.0.2"
+  }
+}
