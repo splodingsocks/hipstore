@@ -7,7 +7,6 @@ export class Cart {
   static carts: Map<string, CartItems> = new Map()
   
   static addItem(id: string, sessionId: string):Product[] {
-      console.log(id, sessionId)
       const productO = Products.get(id)
       const items = Option(this.carts.get(sessionId)).getOrElse(() => new Set())
       if (productO.isEmpty) return [...items]

@@ -3,9 +3,12 @@ import { Products } from "./Products"
 import { Cart } from "./Cart"
 import * as cors from "cors"
 import * as session from "express-session"
+import * as fs from "fs"
 
 
+const html = fs.readFileSync(__dirname + "/index.html")
 const app = express()
+app.use(express.static(__dirname + "/static"))
 
 app.use(session({
   name: 'session',
@@ -31,6 +34,11 @@ app.post("/api/cart/:id", (req, res) => {
 
 app.delete("/api/cart/:id", (req, res) => {
   res.json(Cart.removeItem(req.params.id, req.sessionID || ""))
+})
+
+app.get("/", (req, res) => {
+  res.contentType('html')
+  res.send(html)
 })
 
 app.listen(4000, () => {
