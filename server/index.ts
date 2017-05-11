@@ -8,8 +8,8 @@ import * as fs from "fs"
 
 const html = fs.readFileSync(__dirname + "/index.html")
 const app = express()
-app.use(express.static(__dirname + "/static"))
 
+app.use(express.static(__dirname + "/static"))
 app.use(session({
   name: 'session',
   cookie: {maxAge: 7 * 24 * 60 * 60 * 1000}, // One week
@@ -17,8 +17,16 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
-
-app.use(cors());
+const corsOptions = {
+    origin: (origin: String, callback: (err: any, accept: boolean) => void) => {
+        callback(null, true)
+    },
+    credentials: true,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204
+}
+app.use(cors(corsOptions));
 
 app.get("/api/products", (req, res) => {
   res.json(Products.getAll())
