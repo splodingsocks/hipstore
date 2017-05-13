@@ -1,5 +1,5 @@
 {
-  "name": "hipstore",
+  "name": "hipstore-server",
   "version": "1.0.0",
   "description": "A starter kit for Murphy Randle's workshop on learning intermediate Elm",
   "main": "src/server/index.js",
